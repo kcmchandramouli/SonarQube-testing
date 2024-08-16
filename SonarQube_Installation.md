@@ -28,8 +28,15 @@
 -   Currently I am unable to run sonarqube due to some Elasticsearch issue. Need to Investegate further here.
 
 
-####    Installing & Code Scanning Using Docker
+####    Installing & Code Scanning Using Docker(Working)
 -   Pull the Sonarqube docker image.
+    -   use "docker pull sonarqube:latest"
+    -   use "docker run -d --name sonarqube -p 9000:9000 sonarqube:latest"
+-   Open browser & brouse to "http://localhost:9000"
+-   user & password will be "admin" & change it.
+-   Run this command for analysis "<path to ./sonar-scanner.bat> -D"project.settings=<Path to sonar-project.properties file>" -D"sonar.host.url=http://localhost:9000" -D"sonar.login=<SonarQubr_Token>" -D"sonar.projectKey=<your_project_key>" -X"
+
+
 -   Run "docker run -d --name sonarqube-db -e POSTGRES_USER=sonar -e POSTGRES_PASSWORD=sonar -e POSTGRES_DB=sonarqube postgres:alpine"
 -   Run "docker run -d --name sonarqube -p 9000:9000 --link sonarqube-db:db -e SONAR_JDBC_URL=jdbc:postgresql://db:5432/sonarqube -e SONAR_JDBC_USERNAME=sonar -e SONAR_JDBC_PASSWORD=sonar sonarqube"
 
